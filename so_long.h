@@ -6,7 +6,7 @@
 /*   By: abmisk <abmisk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:43:15 by abmisk            #+#    #+#             */
-/*   Updated: 2023/07/22 04:40:19 by abmisk           ###   ########.fr       */
+/*   Updated: 2023/07/22 05:19:26 by abmisk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_strcmp(char *s1, char *s2);
 void	ft_error(void);
 int search_for_ber(char **av, char *s);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-size_t	ft_strlen(const char *s);
+int ft_strlen(const char *str);
 
 
 #endif
