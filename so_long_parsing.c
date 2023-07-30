@@ -22,14 +22,6 @@ int	ft_strcmp(char *s1, char *s2)
 	return (1);
 }
 
-int ft_strlen(const char *str)
-{
-    int i = 0;
-    while (str[i] != '\0')
-        i++;
-    return i;
-}
-
 char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
     size_t i;

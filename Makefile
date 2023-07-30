@@ -1,6 +1,6 @@
 NAME	=	so_long
 
-SRCS	= 	so_long.c so_long_parsing.c
+SRCS	= 	all/*.c so_long.c so_long_parsing.c lst.c so_long_parse_map.c
 
 OBJCT	=	${all:.c=.o}
 
