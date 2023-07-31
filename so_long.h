@@ -6,7 +6,7 @@
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:43:15 by abmisk            #+#    #+#             */
-/*   Updated: 2023/07/31 14:18:14 by mac              ###   ########.fr       */
+/*   Updated: 2023/07/31 18:27:48 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int ft_a_wall(char *line);
 int ft_linesln(char **lines);
 char **ft_store_map(char *file);
 char	*ft_strjoin(char const *s1, char const *s2);
+int ft_check_collectible(char **lines);
 
 #endif

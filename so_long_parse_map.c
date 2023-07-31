@@ -101,3 +101,35 @@ char **ft_store_map(char *file)
 		ft_error();
 	return (lines);
 }
+
+int ft_check_collectible(char **lines)
+{
+	int i;
+	int j;
+	int col;
+	int exit;
+	int P;
+
+	i = 0;
+	j = 0;
+	exit = 0;
+	col = 0;
+	P = 0;
+	while (lines[i])
+	{
+		while (lines[i][j])
+		{
+			if (lines[i][j] == 'C')
+				col++;
+			else if (lines[i][j] == 'E')
+				exit++;
+			else if (lines[i][j] == 'P')
+				P++;	
+			j++;
+		}
+		i++;
+	}
+	if ((col < 1) || (exit != 1) || (P != 1))
+		return (0);
+	return (1);
+}
