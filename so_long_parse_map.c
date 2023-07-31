@@ -5,7 +5,7 @@ int ft_linesln(char **lines)
 	int i;
 
 	i = 0;
-	while (lines[i] != '\0')
+	while (lines[i])
 		i++;
 	return (i);
 }
@@ -24,26 +24,31 @@ int ft_a_wall(char *line)
 	return (1);
 }
 
-void ft_check_walls(char **lines, int index)
+int ft_check_walls(char **lines)
 {
 	int x;
+	int index;
 
 	x = 0;
+	index = 0;
+	if(!lines)
+		return (0);
 	while (lines[index])
 	{
 		if ((index == 0) || (index == ft_linesln(lines)))
 		{
 			if(!ft_a_wall(lines[index]))
-				ft_error();
+				return (0);
 		}
 		else
 		{
 			x = ft_strlen(lines[index]);
 			if (lines[index][0] != '1' || lines[index][x - 1] != '1')
-				ft_error();	
+				return (0);	
 		}
 		index++;
 	}
+	return (1);
 }
 
 int check_size_line(char **lines)
@@ -65,23 +70,34 @@ char **ft_store_map(char *file)
 	int fd;
 	char **lines;
 	char *str;
+	char *ptr;
 
+	lines = NULL;
 	fd = open(file, O_RDONLY);
-	if (!fd)
+	if (fd < 0)
 		ft_error();
 	str = get_next_line(fd);
+	ptr = NULL;
 	while (str)
 	{
-		str = get_next_line(fd);
-		if (!str)
+		ptr = ft_strjoin(ptr, str);
+		if (str && str[0] == '\n')
 		{
+			free(ptr);
 			free(str);
-			str = NULL;
 			ft_error();
 		}
+		free(str);
+		str = get_next_line(fd);
 	}
-	lines = ft_split(str, '\n');
+	lines = ft_split(ptr, '\n');
+	free (ptr);
+	if(!lines)
+		return (0);
+	printf("fdsqfqsdfqsd\n");
 	if (!check_size_line(lines))
+		ft_error();
+	if (!ft_check_walls(lines))
 		ft_error();
 	return (lines);
 }

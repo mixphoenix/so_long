@@ -6,7 +6,7 @@
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:43:15 by abmisk            #+#    #+#             */
-/*   Updated: 2023/07/30 19:17:25 by mac              ###   ########.fr       */
+/*   Updated: 2023/07/31 14:18:14 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ char *ft_substr(char const *s, unsigned int start, size_t len);
 void ft_str_free(char **str);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
-void ft_check_walls(char **lines, int index);
+int ft_check_walls(char **lines);
 int ft_a_wall(char *line);
 int ft_linesln(char **lines);
+char **ft_store_map(char *file);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
