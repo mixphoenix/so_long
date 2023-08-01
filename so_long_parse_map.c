@@ -119,6 +119,7 @@ int ft_check_collectible(char **lines)
 	P = 0;
 	while (lines[i])
 	{
+		j = 0;
 		while (lines[i][j])
 		{
 			if (lines[i][j] == 'C')
@@ -135,3 +136,4 @@ int ft_check_collectible(char **lines)
 		return (0);
 	return (1);
 }
+
