@@ -11,8 +11,9 @@ int main(int ac, char **av)
 		lines = ft_store_map(av[1]);
 		if (!lines)
 			ft_error();
-		if(!ft_check_collectible(lines))
+		if (!ft_check_collectible(lines))
 			ft_error();
+		printf("dsafasdfas\n");
 		//printf("qsdfsqdfqsd\n");
 	}
 	else

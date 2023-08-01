@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abmisk <abmisk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:43:15 by abmisk            #+#    #+#             */
-/*   Updated: 2023/07/31 18:27:48 by mac              ###   ########.fr       */
+/*   Updated: 2023/08/01 01:15:18 by abmisk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
-
 
 typedef struct s_stack
 {

@@ -56,7 +56,7 @@ int check_size_line(char **lines)
 	int i;
 
 	i = 0;
-	while (lines)
+	while ((lines[i] != NULL) && (lines[i + 1] != NULL))
 	{
 		if (ft_strlen(lines[i]) != ft_strlen(lines[i + 1]))
 			return (0);
@@ -71,8 +71,10 @@ char **ft_store_map(char *file)
 	char **lines;
 	char *str;
 	char *ptr;
+	int i;
 
 	lines = NULL;
+	i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error();
@@ -90,13 +92,13 @@ char **ft_store_map(char *file)
 		free(str);
 		str = get_next_line(fd);
 	}
+	//printf("%s", ptr);
 	lines = ft_split(ptr, '\n');
+	if (!check_size_line(lines))
+		ft_error();
 	free (ptr);
 	if(!lines)
 		return (0);
-	printf("fdsqfqsdfqsd\n");
-	if (!check_size_line(lines))
-		ft_error();
 	if (!ft_check_walls(lines))
 		ft_error();
 	return (lines);
@@ -124,7 +126,7 @@ int ft_check_collectible(char **lines)
 			else if (lines[i][j] == 'E')
 				exit++;
 			else if (lines[i][j] == 'P')
-				P++;	
+				P++;
 			j++;
 		}
 		i++;
