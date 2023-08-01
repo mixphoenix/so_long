@@ -92,7 +92,6 @@ char **ft_store_map(char *file)
 		free(str);
 		str = get_next_line(fd);
 	}
-	//printf("%s", ptr);
 	lines = ft_split(ptr, '\n');
 	if (!check_size_line(lines))
 		ft_error();
