@@ -1,6 +1,7 @@
 #include "so_long.h"
 
-t_stack *ft_fill(t_stack *Q)
+void flood_fill(char **lines)
 {
-	ft_lstadd_back()
+    t_champ *position_of_champ;
+    
 }

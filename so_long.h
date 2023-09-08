@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abmisk <abmisk@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:43:15 by abmisk            #+#    #+#             */
-/*   Updated: 2023/08/01 01:15:18 by abmisk           ###   ########.fr       */
+/*   Updated: 2023/09/08 17:40:23 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,21 @@
 # include <stdlib.h>
 # include <math.h>
 
-typedef struct s_stack
+
+typedef struct s_data_map
 {
-	int				content;
-	struct s_stack	*next;
-}t_stack;
+	int		r;
+	int		player_pos;
+	int		col;
+	int		collectibles;
+	int		exit;
+}			t_data_map;
+
+typedef struct s_champ
+{
+	int		i;
+	int		j;
+}			t_champ;
 
 // int ft_check_arg(int ac, char **av);
 int	ft_strcmp(char *s1, char *s2);
