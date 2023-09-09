@@ -103,36 +103,33 @@ char **ft_store_map(char *file)
 	return (lines);
 }
 
-int ft_check_collectible(char **lines)
+t_data_map	ft_check_collectible(char **lines)
 {
-	int i;
-	int j;
-	int col;
-	int exit;
-	int P;
+	t_data_map	map_collect;
+	int		i;
+	int		j;
 
 	i = 0;
-	j = 0;
-	exit = 0;
-	col = 0;
-	P = 0;
+	map_collect.collectibles = 0;
+	map_collect.player_pos = 0;
+	map_collect.exit = 0;
 	while (lines[i])
 	{
-		j = 0;
-		while (lines[i][j])
+		j = -1;
+		while (lines[i][++j])
 		{
 			if (lines[i][j] == 'C')
-				col++;
-			else if (lines[i][j] == 'E')
-				exit++;
+				map_collect.collectibles++;
 			else if (lines[i][j] == 'P')
-				P++;
-			j++;
+				map_collect.player_pos++;
+			else if (lines[i][j] == 'E')
+				map_collect.exit++;
 		}
 		i++;
 	}
-	if ((col < 1) || (exit != 1) || (P != 1))
-		return (0);
-	return (1);
+	if (map_collect.collectibles < 1 || map_collect.exit != 1 \
+			|| map_collect.player_pos != 1)
+		ft_error();
+	return (map_collect);
 }
 

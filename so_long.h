@@ -6,7 +6,7 @@
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:43:15 by abmisk            #+#    #+#             */
-/*   Updated: 2023/09/08 17:40:23 by mac              ###   ########.fr       */
+/*   Updated: 2023/09/08 19:51:27 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
+
+typedef struct s_stack
+{
+	int				content;
+	struct s_stack	*next;
+}t_stack;
 
 
 typedef struct s_data_map
@@ -61,6 +67,7 @@ int ft_a_wall(char *line);
 int ft_linesln(char **lines);
 char **ft_store_map(char *file);
 char	*ft_strjoin(char const *s1, char const *s2);
-int ft_check_collectible(char **lines);
+t_data_map	ft_check_collectible(char **lines, int n);
+char **ft_check_map(char **av);
 
 #endif
