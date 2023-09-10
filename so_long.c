@@ -2,15 +2,14 @@
 
 int main(int ac, char **av)
 {
-	t_data_map map_coll;
 	char **lines;
-	int i;
 
-	i = 0;
 	if (ac == 2)
 	{
-		lines = ft_check_map(av[1]);
-		map_coll = ft_check_collectible(lines);
+		lines = ft_check_map(av);
+		ft_check_collectible(lines, 1);
+		ft_flood_fill(lines);
+		ft_game(lines);
 	}
 	else
 		ft_error();

@@ -22,6 +22,26 @@ int	ft_strcmp(char *s1, char *s2)
 	return (1);
 }
 
+char    *ft_strdup(char *src)
+{
+    int i;
+    int x;
+    char *p;
+    
+    i = 0;
+    x = ft_strlen(src) + 1;
+    p = (char *)malloc(x * sizeof(char));
+    if(p == NULL)
+        return NULL;
+    while(src[i] != '\0')
+    {
+        p[i] = src[i];
+        i++;
+    }
+    p[i] = '\0';
+    return p;
+}
+
 char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
     size_t i;
@@ -52,4 +72,14 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
         i++;
     }
     return NULL;
+}
+
+void ft_free_double_ptr(char **ptr)
+{
+    int i;
+
+    i = 0;
+    while (ptr[i])
+        free(ptr[i++]);
+    free(ptr);
 }

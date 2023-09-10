@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ibenli <ibenli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:43:15 by abmisk            #+#    #+#             */
-/*   Updated: 2023/09/08 19:51:27 by mac              ###   ########.fr       */
+/*   Updated: 2023/09/10 18:39:23 by ibenli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
+# include <mlx.h>
 
 typedef struct s_stack
 {
@@ -25,6 +26,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 }t_stack;
 
+
+typedef struct s_player_pos
+{
+	int i;
+	int j;
+}			t_player_pos;
 
 typedef struct s_data_map
 {
@@ -40,6 +47,22 @@ typedef struct s_champ
 	int		i;
 	int		j;
 }			t_champ;
+
+typedef struct s_game
+{
+	void *mlx_init;
+	void *mlx_window;
+	void *mlx_coin;
+	void *mlx_player;
+	void *mlx_exit;
+	void *mlx_ground;
+	int	w;
+	int	h;
+	void *mlx_wall;
+	char **map;
+	int counter;
+	t_player_pos pos;
+} t_game;
 
 // int ft_check_arg(int ac, char **av);
 int	ft_strcmp(char *s1, char *s2);
@@ -67,7 +90,16 @@ int ft_a_wall(char *line);
 int ft_linesln(char **lines);
 char **ft_store_map(char *file);
 char	*ft_strjoin(char const *s1, char const *s2);
-t_data_map	ft_check_collectible(char **lines, int n);
+t_data_map	ft_check_collectible(char **lines, int mark);
 char **ft_check_map(char **av);
+t_player_pos    ft_get_player_pos(char **lines);
+char    *ft_strdup(char *src);
+t_data_map ft_rcol(char **lines);
+
+void ft_flood_fill(char **lines);
+void ft_free_double_ptr(char **ptr);
+
+void ft_game(char **map);
+void    ft_swap(char *a, char *b);
 
 #endif

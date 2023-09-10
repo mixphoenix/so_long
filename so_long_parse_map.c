@@ -15,7 +15,8 @@ int ft_a_wall(char *line)
 	int i;
 
 	i = 0;
-	while (line[i] != '\0')
+
+	while (line[i])
 	{
 		if (line[i] != '1')
 			return (0);
@@ -35,17 +36,15 @@ int ft_check_walls(char **lines)
 		return (0);
 	while (lines[index])
 	{
-		if ((index == 0) || (index == ft_linesln(lines)))
+		if ((index == 0) || index == (ft_linesln(lines) - 1))
 		{
+			
 			if(!ft_a_wall(lines[index]))
 				return (0);
 		}
-		else
-		{
-			x = ft_strlen(lines[index]);
-			if (lines[index][0] != '1' || lines[index][x - 1] != '1')
-				return (0);	
-		}
+		x = ft_strlen(lines[index]);
+		if (lines[index][0] != '1' || lines[index][x - 1] != '1')
+			return (0);	
 		index++;
 	}
 	return (1);
@@ -71,10 +70,10 @@ char **ft_store_map(char *file)
 	char **lines;
 	char *str;
 	char *ptr;
-	int i;
+	// int i;
 
 	lines = NULL;
-	i = 0;
+	// i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error();
@@ -103,7 +102,8 @@ char **ft_store_map(char *file)
 	return (lines);
 }
 
-t_data_map	ft_check_collectible(char **lines)
+
+t_data_map	ft_check_collectible(char **lines, int mark)
 {
 	t_data_map	map_collect;
 	int		i;
@@ -127,9 +127,12 @@ t_data_map	ft_check_collectible(char **lines)
 		}
 		i++;
 	}
-	if (map_collect.collectibles < 1 || map_collect.exit != 1 \
-			|| map_collect.player_pos != 1)
-		ft_error();
+	if (mark == 1)
+	{
+		if (map_collect.collectibles < 1 || map_collect.exit != 1 \
+				|| map_collect.player_pos != 1)
+			ft_error();
+	}
 	return (map_collect);
 }
 
