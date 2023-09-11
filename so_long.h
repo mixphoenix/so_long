@@ -6,7 +6,7 @@
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:43:15 by abmisk            #+#    #+#             */
-/*   Updated: 2023/09/11 20:38:36 by mac              ###   ########.fr       */
+/*   Updated: 2023/09/11 23:55:58 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ typedef struct s_game
 }					t_game;
 
 int					ft_strcmp(char *s1, char *s2);
-void				ft_check_collectible_util(char **lines,t_data_map map_collect, int i, int j);
+void				ft_check_collectible_util(char **lines,
+						t_data_map map_collect, int i, int j);
 void				ft_utils_put_images(t_game mlx, int i, int j);
 void				ft_error(void);
 int					search_for_ber(char **av, char *s);

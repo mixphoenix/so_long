@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-char **ft_store_map_util(char **ptr)
+char	**ft_store_map_util(char **ptr)
 {
 	char	**lines;
 
@@ -14,7 +14,6 @@ char **ft_store_map_util(char **ptr)
 		ft_error();
 	return (lines);
 }
-
 
 char	**ft_store_map(char *file)
 {
@@ -45,20 +44,7 @@ char	**ft_store_map(char *file)
 	return (lines);
 }
 
-// void	ft_check_collectible_util(char **lines,t_data_map map_collect, int i, int j)
-// {
-// 	while (lines[i][++j])
-// 	{
-// 		if (lines[i][j] == 'C')
-// 			map_collect.collectibles++;
-// 		else if (lines[i][j] == 'P')
-// 			map_collect.player_pos++;
-// 		else if (lines[i][j] == 'E')
-// 			map_collect.exit++;
-// 	}
-// }
-
-void initialization_norm(t_data_map *map_collect)
+void	initialization_norm(t_data_map *map_collect)
 {
 	map_collect->collectibles = 0;
 	map_collect->player_pos = 0;
@@ -87,7 +73,7 @@ t_data_map	ft_check_collectible(char **lines, int mark)
 		}
 	}
 	if (mark == 1 && (map_collect.collectibles < 1 || map_collect.exit != 1
-		|| map_collect.player_pos != 1))
+			|| map_collect.player_pos != 1))
 		ft_error();
 	return (map_collect);
 }
