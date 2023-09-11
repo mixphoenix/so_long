@@ -12,7 +12,7 @@ all : $(NAME)
 
 $(NAME) : $(SRCS)
 	$(CC)  $(SRCS)  -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	# $(CC)  $(SRCS)  -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	# $(CC)  $(SRCS)  -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $(NAME)
 
 clean :
 	${RM} ${OBJCT}
