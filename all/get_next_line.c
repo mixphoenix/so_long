@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "get_next_line.h"
 
 static int	find(char *line)
@@ -48,7 +47,7 @@ static char	*get_reserve(int fd, char *buffer, char **reserve)
 		buffer[readline] = '\0';
 		p = *reserve;
 		*reserve = gnl_strjoin(p, buffer);
-		free (p);
+		free(p);
 		p = NULL;
 		if (*reserve && gnl_strchr(*reserve, '\n'))
 			break ;
@@ -69,7 +68,7 @@ static char	*subresrve(char *get_line)
 	reserve = gnl_substr(get_line, i + 1, gnl_strlen(get_line) - i);
 	if (!reserve)
 	{
-		free (reserve);
+		free(reserve);
 		reserve = NULL;
 	}
 	return (reserve);
@@ -77,10 +76,10 @@ static char	*subresrve(char *get_line)
 
 char	*get_next_line(int fd)
 {
-	char			*line;
-	char			*buffer;
-	char			*cat;
-	static char		*reserve;
+	char		*line;
+	char		*buffer;
+	char		*cat;
+	static char	*reserve;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -88,14 +87,14 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	line = get_reserve(fd, buffer, &reserve);
-	free (buffer);
+	free(buffer);
 	buffer = NULL;
 	if (!line)
 		return (NULL);
 	reserve = subresrve(line);
 	cat = line;
 	line = gnl_substr(cat, 0, find(line) + 1);
-	free (cat);
+	free(cat);
 	cat = NULL;
 	return (line);
 }

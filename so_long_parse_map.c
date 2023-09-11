@@ -1,8 +1,8 @@
 #include "so_long.h"
 
-int ft_linesln(char **lines)
+int	ft_linesln(char **lines)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (lines[i])
@@ -10,12 +10,11 @@ int ft_linesln(char **lines)
 	return (i);
 }
 
-int ft_a_wall(char *line)
+int	ft_a_wall(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
-
 	while (line[i])
 	{
 		if (line[i] != '1')
@@ -25,34 +24,33 @@ int ft_a_wall(char *line)
 	return (1);
 }
 
-int ft_check_walls(char **lines)
+int	ft_check_walls(char **lines)
 {
-	int x;
-	int index;
+	int	x;
+	int	index;
 
 	x = 0;
 	index = 0;
-	if(!lines)
+	if (!lines)
 		return (0);
 	while (lines[index])
 	{
 		if ((index == 0) || index == (ft_linesln(lines) - 1))
 		{
-			
-			if(!ft_a_wall(lines[index]))
+			if (!ft_a_wall(lines[index]))
 				return (0);
 		}
 		x = ft_strlen(lines[index]);
 		if (lines[index][0] != '1' || lines[index][x - 1] != '1')
-			return (0);	
+			return (0);
 		index++;
 	}
 	return (1);
 }
 
-int check_size_line(char **lines)
+int	check_size_line(char **lines)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while ((lines[i] != NULL) && (lines[i + 1] != NULL))
@@ -64,16 +62,14 @@ int check_size_line(char **lines)
 	return (1);
 }
 
-char **ft_store_map(char *file)
+char	**ft_store_map(char *file)
 {
-	int fd;
-	char **lines;
-	char *str;
-	char *ptr;
-	// int i;
+	int		fd;
+	char	**lines;
+	char	*str;
+	char	*ptr;
 
 	lines = NULL;
-	// i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error();
@@ -92,22 +88,23 @@ char **ft_store_map(char *file)
 		str = get_next_line(fd);
 	}
 	lines = ft_split(ptr, '\n');
+	if(!lines)
+		ft_error();
 	if (!check_size_line(lines))
 		ft_error();
-	free (ptr);
-	if(!lines)
+	free(ptr);
+	if (!lines)
 		return (0);
 	if (!ft_check_walls(lines))
 		ft_error();
 	return (lines);
 }
 
-
 t_data_map	ft_check_collectible(char **lines, int mark)
 {
 	t_data_map	map_collect;
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	i = 0;
 	map_collect.collectibles = 0;
@@ -129,10 +126,9 @@ t_data_map	ft_check_collectible(char **lines, int mark)
 	}
 	if (mark == 1)
 	{
-		if (map_collect.collectibles < 1 || map_collect.exit != 1 \
-				|| map_collect.player_pos != 1)
+		if (map_collect.collectibles < 1 || map_collect.exit != 1
+			|| map_collect.player_pos != 1)
 			ft_error();
 	}
 	return (map_collect);
 }
-

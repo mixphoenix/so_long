@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibenli <ibenli@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:43:15 by abmisk            #+#    #+#             */
-/*   Updated: 2023/09/10 18:39:23 by ibenli           ###   ########.fr       */
+/*   Updated: 2023/09/11 17:40:23 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,13 @@ int ft_check_walls(char **lines);
 int ft_a_wall(char *line);
 int ft_linesln(char **lines);
 char **ft_store_map(char *file);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char const *s2);
 t_data_map	ft_check_collectible(char **lines, int mark);
 char **ft_check_map(char **av);
 t_player_pos    ft_get_player_pos(char **lines);
 char    *ft_strdup(char *src);
 t_data_map ft_rcol(char **lines);
-
+int	ft_printf(const char *arr, ...);
 void ft_flood_fill(char **lines);
 void ft_free_double_ptr(char **ptr);
 

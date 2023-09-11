@@ -1,12 +1,12 @@
 NAME	=	so_long
 
-SRCS	= 	all/*.c so_long.c so_long_utils.c lst.c so_long_parse_map.c so_long_parse_2.c ft_player.c ft_flood_fill.c ft_game.c
+SRCS	= 	all/*.c so_long.c so_long_utils.c so_long_parse_map.c so_long_parse_2.c ft_player.c ft_flood_fill.c ft_game.c
 
 OBJCT	=	${all:.c=.o}
 
 RM		=	rm -f
 
-CC		=	gcc -Wall -Wextra -Werror -I./mlx -fsanitize=address 
+CC		=	gcc -Wall -Wextra -Werror -fsanitize=address -I./mlx
 
 all : $(NAME)
 

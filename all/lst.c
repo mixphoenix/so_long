@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "../so_long.h"
 
 t_stack	*ft_lstlast(t_stack *lst)
 {

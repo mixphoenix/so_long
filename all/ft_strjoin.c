@@ -1,11 +1,11 @@
 #include "../so_long.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
-	char	*constr;
-	int		i;
-	int		j;
-	int		len;
+	char *constr;
+	int i;
+	int j;
+	int len;
 
 	if (!s2)
 		return (NULL);
@@ -26,5 +26,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2[j] != '\0')
 		constr[i++] = s2[j++];
 	constr[i] = '\0';
+	free(s1);
 	return (constr);
 }

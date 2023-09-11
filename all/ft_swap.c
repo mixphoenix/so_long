@@ -1,10 +1,10 @@
 #include "../so_long.h"
 
-void    ft_swap(char *a, char *b)
+void	ft_swap(char *a, char *b)
 {
-    char    tmp;
+	char tmp;
 
-    tmp = *a;
-    *a = *b;
-    *b = tmp;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
