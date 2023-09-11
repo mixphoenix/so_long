@@ -1,66 +1,20 @@
 #include "so_long.h"
 
-int	ft_linesln(char **lines)
+char **ft_store_map_util(char **ptr)
 {
-	int	i;
+	char	**lines;
 
-	i = 0;
-	while (lines[i])
-		i++;
-	return (i);
-}
-
-int	ft_a_wall(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] != '1')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	ft_check_walls(char **lines)
-{
-	int	x;
-	int	index;
-
-	x = 0;
-	index = 0;
+	lines = ft_split(*ptr, '\n');
 	if (!lines)
-		return (0);
-	while (lines[index])
-	{
-		if ((index == 0) || index == (ft_linesln(lines) - 1))
-		{
-			if (!ft_a_wall(lines[index]))
-				return (0);
-		}
-		x = ft_strlen(lines[index]);
-		if (lines[index][0] != '1' || lines[index][x - 1] != '1')
-			return (0);
-		index++;
-	}
-	return (1);
+		ft_error();
+	if (!check_size_line(lines))
+		ft_error();
+	free(*ptr);
+	if (!ft_check_walls(lines))
+		ft_error();
+	return (lines);
 }
 
-int	check_size_line(char **lines)
-{
-	int	i;
-
-	i = 0;
-	while ((lines[i] != NULL) && (lines[i + 1] != NULL))
-	{
-		if (ft_strlen(lines[i]) != ft_strlen(lines[i + 1]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 char	**ft_store_map(char *file)
 {
@@ -87,17 +41,28 @@ char	**ft_store_map(char *file)
 		free(str);
 		str = get_next_line(fd);
 	}
-	lines = ft_split(ptr, '\n');
-	if(!lines)
-		ft_error();
-	if (!check_size_line(lines))
-		ft_error();
-	free(ptr);
-	if (!lines)
-		return (0);
-	if (!ft_check_walls(lines))
-		ft_error();
+	lines = ft_store_map_util(&ptr);
 	return (lines);
+}
+
+// void	ft_check_collectible_util(char **lines,t_data_map map_collect, int i, int j)
+// {
+// 	while (lines[i][++j])
+// 	{
+// 		if (lines[i][j] == 'C')
+// 			map_collect.collectibles++;
+// 		else if (lines[i][j] == 'P')
+// 			map_collect.player_pos++;
+// 		else if (lines[i][j] == 'E')
+// 			map_collect.exit++;
+// 	}
+// }
+
+void initialization_norm(t_data_map *map_collect)
+{
+	map_collect->collectibles = 0;
+	map_collect->player_pos = 0;
+	map_collect->exit = 0;
 }
 
 t_data_map	ft_check_collectible(char **lines, int mark)
@@ -106,14 +71,12 @@ t_data_map	ft_check_collectible(char **lines, int mark)
 	int			i;
 	int			j;
 
-	i = 0;
-	map_collect.collectibles = 0;
-	map_collect.player_pos = 0;
-	map_collect.exit = 0;
-	while (lines[i])
+	i = -1;
+	initialization_norm(&map_collect);
+	while (lines[++i])
 	{
-		j = -1;
-		while (lines[i][++j])
+		j = 0;
+		while (lines[i][j++])
 		{
 			if (lines[i][j] == 'C')
 				map_collect.collectibles++;
@@ -122,13 +85,9 @@ t_data_map	ft_check_collectible(char **lines, int mark)
 			else if (lines[i][j] == 'E')
 				map_collect.exit++;
 		}
-		i++;
 	}
-	if (mark == 1)
-	{
-		if (map_collect.collectibles < 1 || map_collect.exit != 1
-			|| map_collect.player_pos != 1)
-			ft_error();
-	}
+	if (mark == 1 && (map_collect.collectibles < 1 || map_collect.exit != 1
+		|| map_collect.player_pos != 1))
+		ft_error();
 	return (map_collect);
 }

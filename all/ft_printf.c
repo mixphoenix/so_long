@@ -25,9 +25,9 @@ int	ft_print(int c, const char *arr, int i, va_list args)
 
 int	ft_printf(const char *str, ...)
 {
-	va_list args;
-	int i;
-	int c;
+	va_list	args;
+	int		i;
+	int		c;
 
 	va_start(args, str);
 	i = 0;

@@ -53,11 +53,11 @@ static int	ft_addstr(char **strs, const char *s, char c, int i)
 
 char	**ft_split(char const *s, char c)
 {
-	char **strs;
-	int n_words;
-	int i;
-	int pos;
-	int tmp;
+	char	**strs;
+	int		n_words;
+	int		i;
+	int		pos;
+	int		tmp;
 
 	if (!s)
 		return (NULL);

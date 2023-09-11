@@ -1,5 +1,29 @@
 #include "so_long.h"
 
+int	ft_linesln(char **lines)
+{
+	int	i;
+
+	i = 0;
+	while (lines[i])
+		i++;
+	return (i);
+}
+
+int	ft_a_wall(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 t_data_map	ft_rcol(char **lines)
 {
 	t_data_map	map_collect;
@@ -9,12 +33,34 @@ t_data_map	ft_rcol(char **lines)
 	return (map_collect);
 }
 
+t_player_pos	ft_get_player_pos(char **lines)
+{
+	t_player_pos	pos;
+	int				i;
+	int				j;
+
+	i = -1;
+	while (lines[++i])
+	{
+		j = 0;
+		while (lines[i][j])
+		{
+			if (lines[i][j] == 'P')
+			{
+				pos.i = i;
+				pos.j = j;
+			}
+			j++;
+		}
+	}
+	return (pos);
+}
+
 char	**ft_check_map(char **av)
 {
-	// t_data_map map_coll;
-	char **lines;
-	int i;
-	int j;
+	char	**lines;
+	int		i;
+	int		j;
 
 	i = -1;
 	if (!ft_strcmp(ft_strnstr(av[1], ".ber", ft_strlen(av[1])), ".ber"))

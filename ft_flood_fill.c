@@ -46,9 +46,9 @@ void	ft_debth_f_s(char **map, int i, int j)
 
 void	ft_flood_fill(char **lines)
 {
-	char **map;
-	t_player_pos pos;
-	t_data_map map_collect;
+	t_player_pos	pos;
+	t_data_map		map_collect;
+	char			**map;
 
 	map = map_dup(lines);
 	pos = ft_get_player_pos(lines);

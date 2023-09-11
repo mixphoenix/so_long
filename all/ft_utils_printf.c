@@ -47,7 +47,7 @@ int	ft_putstr(char *str)
 
 int	ft_putunbr(unsigned int nb)
 {
-	int c;
+	int	c;
 
 	c = 0;
 	if (nb >= 10)

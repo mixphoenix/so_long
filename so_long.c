@@ -2,7 +2,7 @@
 
 int	main(int ac, char **av)
 {
-	char **lines;
+	char	**lines;
 
 	if (ac == 2)
 	{

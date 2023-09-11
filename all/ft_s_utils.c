@@ -1,17 +1,5 @@
 #include "../so_long.h"
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	x;
-
-	x = 0;
-	if (!s)
-		return (0);
-	while (s[x] != '\0')
-		x++;
-	return (x);
-}
-
 char	*ft_strchr(const char *s, int c)
 {
 	char	*p;
@@ -77,8 +65,8 @@ void	*ft_calloc(size_t count, size_t size)
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t i;
-	unsigned char *r;
+	unsigned char	*r;
+	size_t			i;
 
 	i = 0;
 	r = (unsigned char *)b;
