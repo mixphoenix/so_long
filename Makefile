@@ -6,7 +6,7 @@ OBJCT	=	${all:.c=.o}
 
 RM		=	rm -f
 
-CC		=	gcc -Wall -Wextra -Werror -fsanitize=address -I./mlx
+CC		=	gcc -Wall -Wextra -Werror -I./mlx
 
 all : $(NAME)
 

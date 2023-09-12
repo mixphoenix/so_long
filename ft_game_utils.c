@@ -21,7 +21,7 @@ void	ft_moveup(t_game *mlx, int *collectibles)
 		else
 		{
 			ft_printf("GOOD JOB!\n");
-			exit(0);
+			ft_close(mlx);
 		}
 	}
 	ft_printf("moves : %d\n", ++(mlx->counter));
@@ -48,7 +48,7 @@ void	ft_movedown(t_game *mlx, int *collectibles)
 		else
 		{
 			ft_printf("GOOD JOB!\n");
-			exit(0);
+			ft_close(mlx);
 		}
 	}
 	ft_printf("moves : %d\n", ++(mlx->counter));
@@ -75,7 +75,7 @@ void	ft_moveright(t_game *mlx, int *collectibles)
 		else
 		{
 			ft_printf("GOOD JOB!\n");
-			exit(0);
+			ft_close(mlx);
 		}
 	}
 	ft_printf("moves : %d\n", ++(mlx->counter));
@@ -102,7 +102,7 @@ void	ft_moveleft(t_game *mlx, int *collectibles)
 		else
 		{
 			ft_printf("GOOD JOB!\n");
-			exit(0);
+			ft_close(mlx);
 		}
 	}
 	ft_printf("moves : %d\n", ++(mlx->counter));
